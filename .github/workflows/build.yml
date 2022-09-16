@@ -23,6 +23,7 @@ jobs:
           path: vendor/checkmake
       - name: Build checkmake
         run: docker build --build-arg BUILDER_NAME='Jun Aruga' --build-arg BUILDER_EMAIL='jun.aruga@gmail.com' -t checkmake vendor/checkmake
+      # Test in test_make directory.
       - name: Run checkmake
         run: docker run -v "$PWD/Makefile":/Makefile checkmake
         working-directory: ./test_make
@@ -30,3 +31,10 @@ jobs:
         working-directory: ./test_make
       - run: make test
         working-directory: ./test_make
+      # Test in test_automake directory.
+      - run: autoreconf -i
+        working-directory: ./test_automake
+      - run: ./configure
+        working-directory: ./test_automake
+      - run: make
+        working-directory: ./test_automake
