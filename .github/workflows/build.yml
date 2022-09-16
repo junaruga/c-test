@@ -24,6 +24,9 @@ jobs:
       - name: Build checkmake
         run: docker build --build-arg BUILDER_NAME='Jun Aruga' --build-arg BUILDER_EMAIL='jun.aruga@gmail.com' -t checkmake vendor/checkmake
       - name: Run checkmake
-        run: docker run -v "$PWD/src/Makefile":/Makefile checkmake
-      - run: make -C src
-      - run: make -C src test
+        run: docker run -v "$PWD/Makefile":/Makefile checkmake
+        working-directory: ./test_make
+      - run: make
+        working-directory: ./test_make
+      - run: make test
+        working-directory: ./test_make
