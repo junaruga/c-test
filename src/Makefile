@@ -23,6 +23,6 @@ clean :
 	rm -f *.o $(EXE)
 
 .PHONY: test
-test : all
-	echo "Run the test"
+test :
+	@echo "Testing..."
 	./$(EXE)
