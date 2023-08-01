@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     a = 2;
     printf("Hello 1!\n");
     a = 3;
-    printf("Hello 2!\n");
+    printf("Hello 2! (a: %d)\n", a);
 
     return 0;
 }
